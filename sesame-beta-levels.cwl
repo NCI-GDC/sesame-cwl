@@ -13,14 +13,13 @@ requirements:
       - $(inputs.red_idat)
   - class: InlineJavascriptRequirement
 
-id: sesame_beta_levels
-
 inputs:
   - id: green_idat
     type: File
     inputBinding:
       position: 0
       valueFrom: '$(self.nameroot.replace("_Grn",""))'
+
   - id: red_idat
     type: File
 
@@ -28,7 +27,8 @@ outputs:
   - id: lvl3betas
     type: File
     outputBinding:
-      glob: '*-level3betas-gdcrerun.txt'
+      glob: '*-level3betas-gdc.txt'
+
   - id: metadata
     type: File
     outputBinding:
