@@ -6,7 +6,7 @@ class: CommandLineTool
 
 requirements:
   - class: DockerRequirement
-    dockerPull: 'quay.io/dmiller15/sesame-docker:feat_sesameData1.1.1'
+    dockerPull: 'quay.io/ncigdc/sesame-tool:c3bf2842a9ef3a9c1648533f10d02c3aed4aa74d'
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.green_idat)
