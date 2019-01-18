@@ -6,7 +6,7 @@
     "bioclient_config": {
         "class": "File",
         "location": "/home/ubuntu/bioclient.json"
-    }
+    },
     "bioclient_load_bucket":"s3://ceph.service.consul/bio-automation-test",
     "workflow_uuid":"37efd124-dc30-4399-bbf5-68b1a213c3ba"
 }
