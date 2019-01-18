@@ -4,28 +4,30 @@ cwlVersion: v1.0
 
 class: Workflow
 
+requirements:
+  - class: SubworkflowFeatureRequirement
+  - class: InlineJavascriptRequirement
+  - class: StepInputExpressionRequirement
+
 inputs:
   - id: green_input
     type: File
   - id: red_input
     type: File
-  - id: aliquot_id
-    type: string
   - id: workflow_uuid
-# TODO Add inputs for workflow UUID and aliquot ID also needs to be added to the tool and Docker R script
-
+    type: string
 
 outputs:
   - id: lvl3betas
     type: File
-    source: sesame_beta_levels/lvl3betas
+    outputSource: rename_lvl3/OUTPUT 
   - id: metadata
     type: File
-    source: sesame_beta_levels/metadata
+    outputSource: sesame_beta_levels/metadata
 
 steps:
   - id: sanitize_idats
-    run: santize_idats.cwl
+    run: sanitize_idats.cwl
     in:
       - id: green_idat
         source: green_input
@@ -41,7 +43,7 @@ steps:
       - id: green_idat
         source: sanitize_idats/sanitized_green
       - id: red_idat
-      	source: sanitize_idats/sanitized_red
+        source: sanitize_idats/sanitized_red
     out:
       - id: lvl3betas
       - id: metadata
@@ -52,8 +54,7 @@ steps:
       - id: INPUT
         source: sesame_beta_levels/lvl3betas
       - id: OUTNAME
-        valueFrom: |
-        ${
-          var output = "";
-          output = inputs.workflow_uuid + ".methylation_array.sesame.level3betas.txt"
-        } 
+        source: workflow_uuid
+        valueFrom: $(self).methylation_array.sesame.level3betas.txt
+    out:
+      - id: OUTPUT

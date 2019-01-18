@@ -1,0 +1,10 @@
+{
+    "green_idat": {
+        "class":"File",
+        "location":"/mnt/SCRATCH/Methylation/humgen/illumina_data/EPIC_METHYLATION_PDO-15741/202250790087/202250790087_R01C01_Grn.idat"
+    },
+    "red_idat": {
+        "class":"File",
+        "location":"/mnt/SCRATCH/Methylation/humgen/illumina_data/EPIC_METHYLATION_PDO-15741/202250790087/202250790087_R01C01_Red.idat"
+    }
+}
