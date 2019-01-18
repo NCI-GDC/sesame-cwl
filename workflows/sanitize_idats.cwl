@@ -13,10 +13,10 @@ inputs:
 outputs:
   - id: sanitized_green
     type: File
-    source: basename_rename_green/OUTPUT
+    outputSource: basename_rename_green/OUTPUT
   - id: sanitized_red
     type: File
-    source: basename_rename_red/OUTPUT
+    outputSource: basename_rename_red/OUTPUT
 
 steps:
   - id: decide_suffix
@@ -75,7 +75,7 @@ steps:
     run: ../tools/rename.cwl
     in:
       - id: INPUT
-        source: suffix_rename_green/OUTPUT
+        source: suffix_rename_red/OUTPUT
       - id: OUTNAME
         source: decide_basename/newRedName
     out:
