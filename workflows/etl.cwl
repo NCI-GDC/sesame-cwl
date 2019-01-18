@@ -122,3 +122,5 @@ steps:
         source: load_metadata/output
       - id: key
         valueFrom: did
+    out:
+      - id: output
