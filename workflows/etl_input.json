@@ -1,0 +1,12 @@
+{
+    "green_input_gdc_id":"b6124a88-c125-45b9-9b66-27b6a188e511",
+    "green_input_file_size":8091452,
+    "red_input_gdc_id":"1190962d-5089-402c-ab6d-7284495a8724",
+    "red_input_file_size":8091452,
+    "bioclient_config": {
+        "class": "File",
+        "location": "/home/ubuntu/bioclient.json"
+    }
+    "bioclient_load_bucket":"s3://ceph.service.consul/bio-automation-test",
+    "workflow_uuid":"37efd124-dc30-4399-bbf5-68b1a213c3ba"
+}
