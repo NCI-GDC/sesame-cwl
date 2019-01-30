@@ -26,10 +26,10 @@ inputs:
     type: string
 
 outputs:
-  - id: indexd_lvl3betas_uuid
+  - id: indexd_sesame_methylation_lvl3betas_uuid
     type: string
     outputSource: emit_lvl3betas_uuid/output
-  - id: indexd_metadata_uuid
+  - id: indexd_sesame_methylation_metadata_uuid
     type: string
     outputSource: emit_metadata_uuid/output
 
