@@ -1,4 +1,4 @@
-GDC Base Template
+GDC Methylation Array Sesame Workflow
 ---
 
 Base template repository for other GDC repositories. Included are the default
