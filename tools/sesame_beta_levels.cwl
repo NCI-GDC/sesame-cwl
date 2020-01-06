@@ -1,9 +1,6 @@
-#!/usr/bin/env cwl-runner
-
 cwlVersion: v1.0
-
 class: CommandLineTool
-
+id: sesame_beta_levels
 requirements:
   - class: DockerRequirement
     dockerPull: 'quay.io/ncigdc/sesame-tool:17d651dacad038396b9b4b54d606a2e1e0e2e908'
@@ -14,22 +11,21 @@ requirements:
   - class: InlineJavascriptRequirement
 
 inputs:
-  - id: green_idat
+  green_idat:
     type: File
     inputBinding:
       position: 0
       valueFrom: '$(self.nameroot.replace("_Grn",""))'
 
-  - id: red_idat
-    type: File
+  red_idat: File
 
 outputs:
-  - id: lvl3betas
+  lvl3betas:
     type: File
     outputBinding:
       glob: '*-level3betas-gdc.txt'
 
-  - id: metadata
+  metadata:
     type: File
     outputBinding:
       glob: '*.json'
