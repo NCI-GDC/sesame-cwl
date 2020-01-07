@@ -49,5 +49,5 @@ steps:
       INPUT: sesame_beta_levels/metadata
       OUTNAME:
         source: job_uuid
-        valueFrom: $(self).methylation_array.sesame.metadata.txt
+        valueFrom: $(self).methylation_array.sesame.metadata.json
     out: [ OUTPUT ]
