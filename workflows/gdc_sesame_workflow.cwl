@@ -5,6 +5,7 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: StepInputExpressionRequirement
   - class: SubworkflowFeatureRequirement
+  - class: MultipleInputFeatureRequirement
 
 inputs:
   bioclient_config: File

@@ -1,6 +1,8 @@
 cwlVersion: v1.0
 class: Workflow
 id: sanitize_idats_workflow
+requirements:
+  - class: MultipleInputFeatureRequirement
 
 inputs:
   green_idat: File
