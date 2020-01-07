@@ -17,7 +17,7 @@ outputs:
     outputSource: rename_lvl3/OUTPUT 
   metadata:
     type: File
-    outputSource: sesame_beta_levels/metadata
+    outputSource: rename_metadata/OUTPUT
 
 steps:
   sanitize_idats:
@@ -41,4 +41,13 @@ steps:
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.level3betas.txt
+    out: [ OUTPUT ]
+
+  rename_metadata:
+    run: ../../tools/rename.cwl
+    in:
+      INPUT: sesame_beta_levels/metadata
+      OUTNAME:
+        source: job_uuid
+        valueFrom: $(self).methylation_array.sesame.metadata.txt
     out: [ OUTPUT ]
