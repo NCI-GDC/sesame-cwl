@@ -1,7 +1,6 @@
-#!/usr/bin/env cwl-runner
-
 cwlVersion: v1.0
-
+class: CommandLineTool
+id: rename_file
 requirements:
   - class: DockerRequirement
     dockerPull: ubuntu:bionic-20180426
@@ -11,17 +10,13 @@ requirements:
         entry: $(inputs.INPUT)
   - class: InlineJavascriptRequirement
 
-class: CommandLineTool
-
 inputs:
-  - id: INPUT
-    type: File
+  INPUT: File
 
-  - id: OUTNAME
-    type: string
+  OUTNAME: string
 
 outputs:
-  - id: OUTPUT
+  OUTPUT:
     type: File
     outputBinding:
       glob: $(inputs.OUTNAME)

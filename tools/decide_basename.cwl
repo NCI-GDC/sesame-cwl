@@ -1,23 +1,16 @@
-#!/usr/bin/env cwl-runner
-
 cwlVersion: v1.0
-
+class: ExpressionTool
+id: decide_basename
 requirements:
     - class: InlineJavascriptRequirement
 
-class: ExpressionTool
-
 inputs:
-    - id: red_idat
-      type: File
-    - id: green_idat
-      type: File
+    red_idat: File
+    green_idat: File
 
 outputs:
-    - id: newRedName
-      type: string
-    - id: newGrnName
-      type: string
+    newRedName: string
+    newGrnName: string
 
 expression: |
     ${
