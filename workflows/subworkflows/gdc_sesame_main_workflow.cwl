@@ -14,7 +14,7 @@ inputs:
 outputs:
   lvl3betas:
     type: File
-    outputSource: rename_lvl3/OUTPUT 
+    outputSource: rename_lvl3/OUTPUT
   metadata:
     type: File
     outputSource: rename_metadata/OUTPUT
@@ -27,11 +27,18 @@ steps:
       red_idat: red_input
     out: [ sanitized_green, sanitized_red ]
 
-  sesame_beta_levels:
+  sesame_deidentify:
     run: ../../tools/sesame_beta_levels.cwl
     in:
       green_idat: sanitize_idats/sanitized_green
       red_idat: sanitize_idats/sanitized_red
+    out: [green_idat_noid, red_idat_noid]
+
+  sesame_beta_levels:
+    run: ../../tools/sesame_beta_levels.cwl
+    in:
+      green_idat: sesame_deidentify/green_idat_noid
+      red_idat: sesame_deidentify/red_idat_noid
     out: [ lvl3betas, metadata ]
 
   rename_lvl3:
