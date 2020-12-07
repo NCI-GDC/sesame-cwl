@@ -18,6 +18,12 @@ outputs:
   metadata:
     type: File
     outputSource: rename_metadata/OUTPUT
+  idat_noid_grn:
+    type: File
+    outputSource: rename_noid_Grn/OUTPUT
+  idat_noid_red:
+    type: File
+    outputSource: rename_noid_Red/OUTPUT
 
 steps:
   sanitize_idats:
@@ -28,7 +34,7 @@ steps:
     out: [ sanitized_green, sanitized_red ]
 
   sesame_deidentify:
-    run: ../../tools/sesame_beta_levels.cwl
+    run: ../../tools/sesame_deidentify.cwl
     in:
       green_idat: sanitize_idats/sanitized_green
       red_idat: sanitize_idats/sanitized_red
@@ -57,4 +63,22 @@ steps:
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.metadata.json
+    out: [ OUTPUT ]
+
+  rename_noid_Grn:
+    run: ../../tools/rename.cwl
+    in:
+      INPUT: sesame_deidentify/green_idat_noid
+      OUTNAME:
+        source: job_uuid
+        valueFrom: $(self)_noid_Grn.idat
+    out: [ OUTPUT ]
+
+  rename_noid_Red:
+    run: ../../tools/rename.cwl
+    in:
+      INPUT: sesame_deidentify/red_idat_noid
+      OUTNAME:
+        source: job_uuid
+        valueFrom: $(self)_noid_Red.idat
     out: [ OUTPUT ]
