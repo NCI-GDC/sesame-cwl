@@ -129,7 +129,7 @@ steps:
   emit_idat_noid_grn_uuid:
     run: ../tools/emit_json_value.cwl
     in:
-      input: load_idat_noid_red/output
+      input: load_idat_noid_grn/output
       key:
         default: did
     out: [ output ]
