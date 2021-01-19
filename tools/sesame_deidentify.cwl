@@ -3,7 +3,7 @@ class: CommandLineTool
 id: sesame_deidentify
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/ncigdc/sesame-tool:5e9819261ab78255079356cbff28ce80c9f8b4ec
+    dockerPull: quay.io/ncigdc/sesame-tool:bc7e00931b6db78ba5596952fab7012db5d08d47
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.green_idat)
@@ -16,7 +16,7 @@ inputs:
     type: File
     inputBinding:
       position: 0
-    
+
 
   red_idat:
     type: File
