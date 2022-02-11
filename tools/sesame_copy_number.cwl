@@ -3,7 +3,7 @@ class: CommandLineTool
 id: sesame_copy_number
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/ncigdc/sesame-tool:1.8.0
+    dockerPull: quay.io/ncigdc/sesame-tool:2.0.1-78.d13248b
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.target_green_idat)
@@ -46,5 +46,5 @@ outputs:
 
 baseCommand:
   - Rscript
-  - /home/sesame-scripts/sesame-cnv.R
+  - /opt/sesame-cnv.R
   - ./
