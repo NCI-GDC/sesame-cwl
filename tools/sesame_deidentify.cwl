@@ -1,6 +1,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
-id: sesame_beta_levels
+id: sesame_deidentify
 requirements:
   - class: DockerRequirement
     dockerPull: quay.io/ncigdc/sesame-tool:2.0.1
@@ -10,27 +10,30 @@ requirements:
       - $(inputs.red_idat)
   - class: InlineJavascriptRequirement
 
+
 inputs:
   green_idat:
     type: File
     inputBinding:
       position: 0
-      valueFrom: '$(self.nameroot.replace("_Grn",""))'
 
-  red_idat: File
+
+  red_idat:
+    type: File
+    inputBinding:
+      position: 2
 
 outputs:
-  lvl3betas:
+  green_idat_noid:
     type: File
     outputBinding:
-      glob: '*-level3betas-gdc.txt'
+      glob: 'test_noid_Grn.idat'
 
-  metadata:
+  red_idat_noid:
     type: File
     outputBinding:
-      glob: '*.json'
+      glob: 'test_noid_Red.idat'
 
 baseCommand:
   - Rscript
-  - /opt/sesame-lvl3betas.R
-  - ./
+  - /opt/sesame-deidentify.R
