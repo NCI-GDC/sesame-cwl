@@ -23,13 +23,13 @@ expression: |
             var basename = path.split(/[\\/]/).pop();
             return basename
         }
-    
+
         var grnFilePath = inputs.green_idat.location;
         var redFilePath = inputs.red_idat.location;
-        var grnFileName = local_basename(grnFilePath); 
+        var grnFileName = local_basename(grnFilePath);
         var redFileName = local_basename(redFilePath);
         var newGrnName = (endsWith(grnFileName,'_Grn.idat') || endsWith(grnFileName,'_Grn.idat.gz')) ? grnFileName:grnFileName+'_Grn.idat';
         var newRedName = (endsWith(redFileName,'_Red.idat') || endsWith(redFileName,'_Red.idat.gz')) ? redFileName:redFileName+'_Red.idat';
-    
+
         return {'newGrnName':newGrnName,'newRedName':newRedName}
     }
