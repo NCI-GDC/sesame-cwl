@@ -35,6 +35,7 @@ inputs:
       position: 2
 
   job_uuid:
+    type: string?
     inputBinding:
       position: 3
 
