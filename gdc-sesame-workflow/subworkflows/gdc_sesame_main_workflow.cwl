@@ -18,6 +18,9 @@ outputs:
   metadata:
     type: File
     outputSource: rename_metadata/OUTPUT
+  copynumber_segment:
+    type: File
+    outputSource: rename_copynumber_segment/OUTPUT
   idat_noid_grn:
     type: File
     outputSource: rename_noid_Grn/OUTPUT
@@ -47,6 +50,13 @@ steps:
       red_idat: sesame_deidentify/red_idat_noid
     out: [ lvl3betas, metadata ]
 
+  sesame_copynumber_segment:
+    run: ../../tools/sesame_copy_number.cwl
+    in:
+      green_idat: sesame_deidentify/green_idat_noid
+      red_idat: sesame_deidentify/red_idat_noid
+    out: [ copynumber_segment ]
+
   rename_lvl3:
     run: ../../tools/rename.cwl
     in:
@@ -64,6 +74,16 @@ steps:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.metadata.json
     out: [ OUTPUT ]
+
+  rename_copynumber_segment:
+    run: ../../tools/rename.cwl
+    in:
+      INPUT: sesame_copynumber_segment/copynumber_segment
+      OUTNAME:
+        source: job_uuid
+        valueFrom: $(self).methylation_array.sesame.copynumber_segment.json
+    out: [ OUTPUT ]
+
 
   rename_noid_Grn:
     run: ../../tools/rename.cwl

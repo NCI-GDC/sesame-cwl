@@ -23,6 +23,9 @@ outputs:
   indexd_sesame_methylation_metadata_uuid:
     type: string
     outputSource: emit_metadata_uuid/output
+  indexd_sesame_methylation_copynumber_segment_uuid:
+    type: string
+    outputSource: emit_copynumber_segment_uuid/output
   indexd_sesame_methylation_noid_grn_idat_uuid:
     type: string
     outputSource: emit_idat_noid_grn_uuid/output
@@ -53,7 +56,7 @@ steps:
       green_input: extract_green_input/output
       red_input: extract_red_input/output
       job_uuid: job_uuid
-    out: [ lvl3betas, metadata, idat_noid_grn, idat_noid_red ]
+    out: [ lvl3betas, metadata, copynumber_segment, idat_noid_grn, idat_noid_red ]
 
   load_idat_noid_grn:
     run: ../tools/bio_client_upload_pull_uuid.cwl
@@ -102,6 +105,19 @@ steps:
         valueFrom: $(self[0])/$(self[1].basename)
     out: [ output ]
 
+  load_copynumber_segment:
+    run: ../tools/bio_client_upload_pull_uuid.cwl
+    in:
+      config-file: bioclient_config
+      input: transform/copynumber_segment
+      upload-bucket: bioclient_load_bucket
+      upload-key:
+        source: [ job_uuid, transform/copynumber_segment ]
+        valueFrom: $(self[0])/$(self[1].basename)
+      job_uuid: job_uuid
+    out: [ output ]
+
+
   emit_lvl3betas_uuid:
     run: ../tools/emit_json_value.cwl
     in:
@@ -114,6 +130,14 @@ steps:
     run: ../tools/emit_json_value.cwl
     in:
       input: load_metadata/output
+      key:
+        default: did
+    out: [ output ]
+
+  emit_copynumber_segment_uuid:
+    run: ../tools/emit_json_value.cwl
+    in:
+      input: load_copynumber_segment/output
       key:
         default: did
     out: [ output ]
