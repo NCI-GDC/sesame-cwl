@@ -3,7 +3,7 @@ class: CommandLineTool
 id: sesame_copy_number
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/ncigdc/sesame-tool:3.0.0-163.4bbc98e
+    dockerPull: quay.io/ncigdc/sesame-tool:3.0.0-167.479dfa1
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.green_idat)
