@@ -23,7 +23,7 @@ outputs:
   copynumber_segment:
     type: File
     outputBinding:
-      glob: '*methylation_array.sesame.seg.tsv'
+      glob: '*.methylation_array.sesame_seg.tsv'
 
 baseCommand:
   - Rscript
