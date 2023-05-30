@@ -8,9 +8,6 @@ requirements:
     listing:
       - $(inputs.green_idat)
       - $(inputs.red_idat)
-      - $(inputs.age_clock353)
-      - $(inputs.age_sb)
-      - $(inputs.age_pheno)
   - class: InlineJavascriptRequirement
 
 inputs:
@@ -22,29 +19,29 @@ inputs:
 
   red_idat: File
 
-  age_clock353:
-    type: File
-    default:
-      class: File
-      path: ../models/2add48183921_Clock_Horvath353.rds
-    inputBinding:
-      position: 5
+#  age_clock353:
+#    type: File
+#    default:
+#      class: File
+#      path: ../models/2add48183921_Clock_Horvath353.rds
+#    inputBinding:
+#      position: 5
 
-  age_sb:
-    type: File
-    default:
-      class: File
-      path: ../models/2add2e4eca81_Clock_SkinBlood.rds
-    inputBinding:
-      position: 7
+#  age_sb:
+#    type: File
+#    default:
+#      class: File
+#      path: ../models/2add2e4eca81_Clock_SkinBlood.rds
+#    inputBinding:
+#      position: 7
 
-  age_pheno:
-    type: File
-    default:
-      class: File
-      path: ../models/2add36d0f2e7_Clock_PhenoAge.rds
-    inputBinding:
-      position: 9
+#  age_pheno:
+#    type: File
+#    default:
+#      class: File
+#      path: ../models/2add36d0f2e7_Clock_PhenoAge.rds
+#    inputBinding:
+#      position: 9
 
 outputs:
   lvl3betas:
@@ -62,11 +59,11 @@ baseCommand:
   - /opt/sesame-lvl3betas.R
   - ./
 
-#arguments:
- # - valueFrom: $("../models/2add2e4eca81_Clock_SkinBlood.rds")
- #   position: 5
- # - valueFrom: $("../models/2add2e4eca81_Clock_SkinBlood.rds")
- #   position: 7
- # - valueFrom: $("../models/2add36d0f2e7_Clock_PhenoAge.rds")
- #   position: 9
+arguments:
+  - valueFrom: $("../models/2add2e4eca81_Clock_SkinBlood.rds")
+    position: 5
+  - valueFrom: $("../models/2add2e4eca81_Clock_SkinBlood.rds")
+    position: 7
+  - valueFrom: $("../models/2add36d0f2e7_Clock_PhenoAge.rds")
+    position: 9
 
