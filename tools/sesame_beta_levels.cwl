@@ -60,7 +60,7 @@ baseCommand:
   - ./
 
 arguments:
-  - valueFrom: $("../models/2add2e4eca81_Clock_SkinBlood.rds")
+  - valueFrom: $("../models/2add48183921_Clock_Horvath353.rds")
     position: 5
   - valueFrom: $("../models/2add2e4eca81_Clock_SkinBlood.rds")
     position: 7
