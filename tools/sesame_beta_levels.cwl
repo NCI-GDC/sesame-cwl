@@ -57,5 +57,3 @@ outputs:
 baseCommand:
   - Rscript
   - /opt/sesame-lvl3betas.R
-  - ./
-
