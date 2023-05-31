@@ -8,9 +8,6 @@ requirements:
     listing:
       - $(inputs.green_idat)
       - $(inputs.red_idat)
-      - $(inputs.age_clock353)
-      - $(inputs.age_sb)
-      - $(inputs.age_pheno)
   - class: InlineJavascriptRequirement
 
 inputs:
