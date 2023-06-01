@@ -10,6 +10,9 @@ inputs:
   green_input: File
   red_input: File
   job_uuid: string
+  age_clock353: File
+  age_sb: File
+  age_pheno: File
 
 outputs:
   lvl3betas:
@@ -48,6 +51,9 @@ steps:
     in:
       green_idat: sesame_deidentify/green_idat_noid
       red_idat: sesame_deidentify/red_idat_noid
+      age_clock353: age_clcock353
+      age_sb: age_sb
+      age_pheno: age_pheno
     out: [ lvl3betas, metadata ]
 
   sesame_copynumber_segment:

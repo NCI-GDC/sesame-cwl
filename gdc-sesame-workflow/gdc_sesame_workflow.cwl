@@ -15,6 +15,9 @@ inputs:
   red_input_gdc_id: string
   red_input_file_size: long
   job_uuid: string
+  age_clock353: string
+  age_sb: string
+  age_pheno: string
 
 outputs:
   indexd_sesame_methylation_lvl3betas_uuid:
@@ -50,11 +53,35 @@ steps:
       file_size: red_input_file_size
     out: [ output ]
 
+  extract_age_clock353:
+    run: ../tools/bio_client_download.cwl
+    in:
+      config-file: bioclient_config
+      download_handle: age_clock353
+    out: [ output ]
+
+  extract_age_sb:
+    run: ../tools/bio_client_download.cwl
+    in:
+      config-file: bioclient_config
+      download_handle: age_sb
+    out: [ output ]
+
+  extract_age_pheno:
+    run: ../tools/bio_client_download.cwl
+    in:
+      config-file: bioclient_config
+      download_handle: age_pheno
+    out: [ output ]
+
   transform:
     run: ./subworkflows/gdc_sesame_main_workflow.cwl
     in:
       green_input: extract_green_input/output
       red_input: extract_red_input/output
+      age_clock353: extract_age_clock353/output
+      age_sb: extract_age_sb/output
+      age_pheno: extract_age_pheno/output
       job_uuid: job_uuid
     out: [ lvl3betas, metadata, copynumber_segment, idat_noid_grn, idat_noid_red ]
 
