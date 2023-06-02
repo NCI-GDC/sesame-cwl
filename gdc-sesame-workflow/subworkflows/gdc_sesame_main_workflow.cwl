@@ -51,7 +51,7 @@ steps:
     in:
       green_idat: sesame_deidentify/green_idat_noid
       red_idat: sesame_deidentify/red_idat_noid
-      age_clock353: age_clcock353
+      age_clock353: age_clock353
       age_sb: age_sb
       age_pheno: age_pheno
     out: [ lvl3betas, metadata ]
