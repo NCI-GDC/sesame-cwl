@@ -18,7 +18,6 @@ inputs:
   age_clock353: string
   age_sb: string
   age_pheno: string
-
 outputs:
   indexd_sesame_methylation_lvl3betas_uuid:
     type: string
