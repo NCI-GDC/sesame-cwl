@@ -15,9 +15,9 @@ inputs:
   red_input_gdc_id: string
   red_input_file_size: long
   job_uuid: string
-  age_clock353: string
-  age_sb: string
-  age_pheno: string
+  age_clock353: File
+  age_sb: File
+  age_pheno: File
 outputs:
   indexd_sesame_methylation_lvl3betas_uuid:
     type: string
