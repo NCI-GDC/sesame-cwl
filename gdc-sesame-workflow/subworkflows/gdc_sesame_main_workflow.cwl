@@ -13,6 +13,7 @@ inputs:
   age_clock353: File
   age_sb: File
   age_pheno: File
+  probe_coords: File
 
 outputs:
   lvl3betas:
@@ -61,6 +62,7 @@ steps:
     in:
       green_idat: sesame_deidentify/green_idat_noid
       red_idat: sesame_deidentify/red_idat_noid
+      probe_coords: probe_coords
     out: [ copynumber_segment ]
 
   rename_lvl3:

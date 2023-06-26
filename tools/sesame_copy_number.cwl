@@ -19,6 +19,10 @@ inputs:
 
   red_idat: File
 
+  probe_coords:
+    type: File
+    position: 1
+
 outputs:
   copynumber_segment:
     type: File

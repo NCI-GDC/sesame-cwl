@@ -18,6 +18,7 @@ inputs:
   age_clock353: string
   age_sb: string
   age_pheno: string
+  probe_coords_uuid: string
 outputs:
   indexd_sesame_methylation_lvl3betas_uuid:
     type: string
@@ -59,11 +60,11 @@ steps:
       download_handle: age_clock353
     out: [ output ]
 
-  extract_age_sb:
+  extract_age_pheno:
     run: ../tools/bio_client_download.cwl
     in:
       config-file: bioclient_config
-      download_handle: age_sb
+      download_handle: age_pheno
     out: [ output ]
 
   extract_age_pheno:
@@ -71,6 +72,13 @@ steps:
     in:
       config-file: bioclient_config
       download_handle: age_pheno
+    out: [ output ]
+
+  extract_probe_coords:
+    run: ../tools/bio_client_download.cwl
+    in:
+      config-file: bioclient_config
+      download_handle: probe_coords_uuid
     out: [ output ]
 
   transform:
@@ -81,6 +89,7 @@ steps:
       age_clock353: extract_age_clock353/output
       age_sb: extract_age_sb/output
       age_pheno: extract_age_pheno/output
+      probe_coords: extract_probe_coords/output
       job_uuid: job_uuid
     out: [ lvl3betas, metadata, copynumber_segment, idat_noid_grn, idat_noid_red ]
 
