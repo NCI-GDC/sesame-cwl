@@ -60,11 +60,11 @@ steps:
       download_handle: age_clock353
     out: [ output ]
 
-  extract_age_pheno:
+  extract_age_sb:
     run: ../tools/bio_client_download.cwl
     in:
       config-file: bioclient_config
-      download_handle: age_pheno
+      download_handle: age_sb
     out: [ output ]
 
   extract_age_pheno:
