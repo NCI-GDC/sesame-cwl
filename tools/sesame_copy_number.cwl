@@ -21,7 +21,8 @@ inputs:
 
   probe_coords:
     type: File
-    position: 1
+    inputBinding:
+        position: 1
 
 outputs:
   copynumber_segment:
