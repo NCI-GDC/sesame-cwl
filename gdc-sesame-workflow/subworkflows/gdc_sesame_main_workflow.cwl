@@ -89,7 +89,7 @@ steps:
       INPUT: sesame_copynumber_segment/copynumber_segment
       OUTNAME:
         source: job_uuid
-        valueFrom: $(self).methylation_array.sesame.copynumber_segment.json
+        valueFrom: $(self).methylation_array.sesame.copynumber_segment.tsv
     out: [ OUTPUT ]
 
 
