@@ -3,7 +3,7 @@ class: CommandLineTool
 id: sesame_copy_number
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/ncigdc/sesame-tool:3.0.0-196.d96f425
+    dockerPull: quay.io/ncigdc/sesame-tool:3.0.0-214.61fcd28
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.green_idat)
@@ -18,6 +18,11 @@ inputs:
       valueFrom: '$(self.nameroot.replace("_Grn",""))'
 
   red_idat: File
+
+  probe_coords:
+    type: File
+    inputBinding:
+        position: 1
 
 outputs:
   copynumber_segment:
