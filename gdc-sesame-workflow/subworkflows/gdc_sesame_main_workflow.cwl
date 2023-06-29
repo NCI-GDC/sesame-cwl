@@ -10,6 +10,10 @@ inputs:
   green_input: File
   red_input: File
   job_uuid: string
+  age_clock353: File
+  age_sb: File
+  age_pheno: File
+  probe_coords: File
 
 outputs:
   lvl3betas:
@@ -18,6 +22,9 @@ outputs:
   metadata:
     type: File
     outputSource: rename_metadata/OUTPUT
+  copynumber_segment:
+    type: File
+    outputSource: rename_copynumber_segment/OUTPUT
   idat_noid_grn:
     type: File
     outputSource: rename_noid_Grn/OUTPUT
@@ -45,7 +52,18 @@ steps:
     in:
       green_idat: sesame_deidentify/green_idat_noid
       red_idat: sesame_deidentify/red_idat_noid
+      age_clock353: age_clock353
+      age_sb: age_sb
+      age_pheno: age_pheno
     out: [ lvl3betas, metadata ]
+
+  sesame_copynumber_segment:
+    run: ../../tools/sesame_copy_number.cwl
+    in:
+      green_idat: sesame_deidentify/green_idat_noid
+      red_idat: sesame_deidentify/red_idat_noid
+      probe_coords: probe_coords
+    out: [ copynumber_segment ]
 
   rename_lvl3:
     run: ../../tools/rename.cwl
@@ -64,6 +82,16 @@ steps:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.metadata.json
     out: [ OUTPUT ]
+
+  rename_copynumber_segment:
+    run: ../../tools/rename.cwl
+    in:
+      INPUT: sesame_copynumber_segment/copynumber_segment
+      OUTNAME:
+        source: job_uuid
+        valueFrom: $(self).methylation_array.sesame.copynumber_segment.tsv
+    out: [ OUTPUT ]
+
 
   rename_noid_Grn:
     run: ../../tools/rename.cwl

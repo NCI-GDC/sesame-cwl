@@ -3,7 +3,7 @@ class: CommandLineTool
 id: sesame_beta_levels
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/ncigdc/sesame-tool:2.0.1
+    dockerPull: quay.io/ncigdc/sesame-tool:3.0.0-214.61fcd28
   - class: InitialWorkDirRequirement
     listing:
       - $(inputs.green_idat)
@@ -18,6 +18,21 @@ inputs:
       valueFrom: '$(self.nameroot.replace("_Grn",""))'
 
   red_idat: File
+
+  age_clock353:
+    type: File
+    inputBinding:
+      position: 5
+
+  age_sb:
+    type: File
+    inputBinding:
+      position: 7
+
+  age_pheno:
+    type: File
+    inputBinding:
+      position: 9
 
 outputs:
   lvl3betas:
@@ -34,3 +49,4 @@ baseCommand:
   - Rscript
   - /opt/sesame-lvl3betas.R
   - ./
+
