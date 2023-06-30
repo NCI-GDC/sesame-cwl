@@ -39,31 +39,17 @@ steps:
       green_idat: green_input
       red_idat: red_input
     out: [ sanitized_green, sanitized_red ]
-
-  sesame_deidentify:
-    run: ../../tools/sesame_deidentify.cwl
+  
+  sesame_all:
+    run: ../../tools/sesame_all.cwl
     in:
       green_idat: sanitize_idats/sanitized_green
       red_idat: sanitize_idats/sanitized_red
-    out: [green_idat_noid, red_idat_noid]
-
-  sesame_beta_levels:
-    run: ../../tools/sesame_beta_levels.cwl
-    in:
-      green_idat: sesame_deidentify/green_idat_noid
-      red_idat: sesame_deidentify/red_idat_noid
       age_clock353: age_clock353
       age_sb: age_sb
       age_pheno: age_pheno
-    out: [ lvl3betas, metadata ]
-
-  sesame_copynumber_segment:
-    run: ../../tools/sesame_copy_number.cwl
-    in:
-      green_idat: sesame_deidentify/green_idat_noid
-      red_idat: sesame_deidentify/red_idat_noid
       probe_coords: probe_coords
-    out: [ copynumber_segment ]
+    out: [green_idat_noid, red_idat_noid, lvl3betas, metadata,copynumber_segment ]
 
   rename_lvl3:
     run: ../../tools/rename.cwl
