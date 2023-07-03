@@ -13,7 +13,7 @@ inputs:
   age_clock353: File
   age_sb: File
   age_pheno: File
-  probe_coords: File
+  #probe_coords: File
 
 outputs:
   lvl3betas:
@@ -48,7 +48,7 @@ steps:
       age_clock353: age_clock353
       age_sb: age_sb
       age_pheno: age_pheno
-      probe_coords: probe_coords
+      #probe_coords: probe_coords
     out: [green_idat_noid, red_idat_noid, lvl3betas, metadata,copynumber_segment ]
 
   rename_lvl3:

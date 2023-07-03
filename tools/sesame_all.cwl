@@ -38,10 +38,10 @@ inputs:
     inputBinding:
       position: 5
       
-  probe_coords:
-    type: File
-    inputBinding:
-        position: 6
+  #probe_coords:
+  #  type: File
+  #  inputBinding:
+  #      position: 6
 
 outputs:
   green_idat_noid:
