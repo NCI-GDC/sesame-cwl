@@ -74,12 +74,12 @@ steps:
       download_handle: age_pheno
     out: [ output ]
 
-  extract_probe_coords:
-    run: ../tools/bio_client_download.cwl
-    in:
-      config-file: bioclient_config
-      download_handle: probe_coords_uuid
-    out: [ output ]
+  #extract_probe_coords:
+  #  run: ../tools/bio_client_download.cwl
+  #  in:
+  #    config-file: bioclient_config
+  #    download_handle: probe_coords_uuid
+  #  out: [ output ]
 
   transform:
     run: ./subworkflows/gdc_sesame_main_workflow.cwl
