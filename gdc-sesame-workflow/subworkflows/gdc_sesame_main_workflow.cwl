@@ -54,7 +54,7 @@ steps:
   rename_lvl3:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_beta_levels/lvl3betas
+      INPUT: sesame_all/lvl3betas
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.level3betas.txt
@@ -63,7 +63,7 @@ steps:
   rename_metadata:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_beta_levels/metadata
+      INPUT: sesame_all/metadata
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.metadata.json
@@ -72,7 +72,7 @@ steps:
   rename_copynumber_segment:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_copynumber_segment/copynumber_segment
+      INPUT: sesame_all/copynumber_segment
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.copynumber_segment.tsv
@@ -82,7 +82,7 @@ steps:
   rename_noid_Grn:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_deidentify/green_idat_noid
+      INPUT: sesame_all/green_idat_noid
       OUTNAME:
         source: job_uuid
         valueFrom: $(self)_noid_Grn.idat
@@ -91,7 +91,7 @@ steps:
   rename_noid_Red:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_deidentify/red_idat_noid
+      INPUT: sesame_all/red_idat_noid
       OUTNAME:
         source: job_uuid
         valueFrom: $(self)_noid_Red.idat
