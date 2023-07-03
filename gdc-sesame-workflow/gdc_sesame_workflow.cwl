@@ -89,7 +89,7 @@ steps:
       age_clock353: extract_age_clock353/output
       age_sb: extract_age_sb/output
       age_pheno: extract_age_pheno/output
-      probe_coords: extract_probe_coords/output
+      #probe_coords: extract_probe_coords/output
       job_uuid: job_uuid
     out: [ lvl3betas, metadata, copynumber_segment, idat_noid_grn, idat_noid_red ]
 
