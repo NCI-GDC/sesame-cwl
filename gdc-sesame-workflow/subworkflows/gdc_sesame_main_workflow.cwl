@@ -39,36 +39,22 @@ steps:
       green_idat: green_input
       red_idat: red_input
     out: [ sanitized_green, sanitized_red ]
-
-  sesame_deidentify:
-    run: ../../tools/sesame_deidentify.cwl
+  
+  sesame_all:
+    run: ../../tools/sesame_all.cwl
     in:
       green_idat: sanitize_idats/sanitized_green
       red_idat: sanitize_idats/sanitized_red
-    out: [green_idat_noid, red_idat_noid]
-
-  sesame_beta_levels:
-    run: ../../tools/sesame_beta_levels.cwl
-    in:
-      green_idat: sesame_deidentify/green_idat_noid
-      red_idat: sesame_deidentify/red_idat_noid
       age_clock353: age_clock353
       age_sb: age_sb
       age_pheno: age_pheno
-    out: [ lvl3betas, metadata ]
-
-  sesame_copynumber_segment:
-    run: ../../tools/sesame_copy_number.cwl
-    in:
-      green_idat: sesame_deidentify/green_idat_noid
-      red_idat: sesame_deidentify/red_idat_noid
       probe_coords: probe_coords
-    out: [ copynumber_segment ]
+    out: [green_idat_noid, red_idat_noid, lvl3betas, metadata,copynumber_segment ]
 
   rename_lvl3:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_beta_levels/lvl3betas
+      INPUT: sesame_all/lvl3betas
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.level3betas.txt
@@ -77,7 +63,7 @@ steps:
   rename_metadata:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_beta_levels/metadata
+      INPUT: sesame_all/metadata
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.metadata.json
@@ -86,7 +72,7 @@ steps:
   rename_copynumber_segment:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_copynumber_segment/copynumber_segment
+      INPUT: sesame_all/copynumber_segment
       OUTNAME:
         source: job_uuid
         valueFrom: $(self).methylation_array.sesame.copynumber_segment.tsv
@@ -96,7 +82,7 @@ steps:
   rename_noid_Grn:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_deidentify/green_idat_noid
+      INPUT: sesame_all/green_idat_noid
       OUTNAME:
         source: job_uuid
         valueFrom: $(self)_noid_Grn.idat
@@ -105,7 +91,7 @@ steps:
   rename_noid_Red:
     run: ../../tools/rename.cwl
     in:
-      INPUT: sesame_deidentify/red_idat_noid
+      INPUT: sesame_all/red_idat_noid
       OUTNAME:
         source: job_uuid
         valueFrom: $(self)_noid_Red.idat
