@@ -3,7 +3,7 @@ class: CommandLineTool
 id: bio_client_download
 requirements:
   - class: DockerRequirement
-    dockerPull: quay.io/ncigdc/bio-client:latest
+    dockerPull: "{{ docker_repo }}/bio-client:{{ bio_client }}"
   - class: InlineJavascriptRequirement
   - class: ResourceRequirement
     coresMin: 1
@@ -14,9 +14,19 @@ requirements:
     tmpdirMax: $(Math.ceil (inputs.file_size / 1048576))
     outdirMin: $(Math.ceil (inputs.file_size / 1048576))
     outdirMax: $(Math.ceil (inputs.file_size / 1048576))
+  - class: EnvVarRequirement
+    envDef:
+    - envName: "REQUESTS_CA_BUNDLE"
+      envValue: $(inputs.cert.path)
 
 inputs:
-  config-file:
+  cert:
+      type: File
+      default:
+        class: File
+        location: /etc/ssl/certs/ca-certificates.crt
+
+  config_file:
     type: File
     inputBinding:
       prefix: -c
@@ -49,5 +59,5 @@ outputs:
     type: File
     outputBinding:
       glob: "*"
-    
+
 baseCommand: [/usr/local/bin/bio_client.py]

@@ -20,10 +20,11 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-.pytest_cache/
+_version.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -34,7 +35,6 @@ var/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-pip-selfcheck.json
 
 # Unit test / coverage reports
 htmlcov/
@@ -44,7 +44,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*,cover
+*.cover
 .hypothesis/
 
 # Translations
@@ -68,7 +68,7 @@ docs/_build/
 # PyBuilder
 target/
 
-# IPython Notebook
+# Jupyter Notebook
 .ipynb_checkpoints
 
 # pyenv
@@ -77,59 +77,36 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
+# SageMath parsed files
+*.sage.py
+
 # dotenv
 .env
 
 # virtualenv
-ENV/
-config.py
-auto-qa/
+.venv
 venv/
+ENV/
+
+# direnv
+.envrc
+.direnv/
 
 # Spyder project settings
 .spyderproject
+.spyproject
 
 # Rope project settings
 .ropeproject
 
-# pyCharm
-.idea
+# mkdocs documentation
+/site
 
-# Project Structure
-reports/images
-bin
-/src
-lib
-include
-vendors/
-reports/
-.idea
-.cache
+# mypy
+.mypy_cache/
 
-#SSL
-*.key
-*.crt
+# VSCode
+.vscode/
 
-#GDC related files
-gdc-user-token.*
-
-#OpenStack
-admin_auth
-.novarc
-
-#s3 creds
-.s3cfg
-.aws/
-
-#vim
-*.swp
-
-#tools/api
-token.txt
-*.pyc
-
-#iOS
-.DS_STORE
-
-#Allure
-allure-report/
+# Ignore cwl.json file
+cwl.json
