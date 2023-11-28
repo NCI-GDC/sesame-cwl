@@ -19,6 +19,7 @@ inputs:
   age_sb: string
   age_pheno: string
   probe_coords_uuid: string
+  ev2_probe_coords_uuid: string
 outputs:
   indexd_sesame_methylation_lvl3betas_uuid:
     type: string
@@ -81,6 +82,13 @@ steps:
       download_handle: probe_coords_uuid
     out: [ output ]
 
+  extract_ev2_probe_coords:
+    run: ../tools/bio_client_download.cwl
+    in:
+      config_file: bioclient_config
+      download_handle: ev2_probe_coords_uuid
+    out: [ output ]
+
   transform:
     run: ./subworkflows/gdc_sesame_main_workflow.cwl
     in:
@@ -90,6 +98,7 @@ steps:
       age_sb: extract_age_sb/output
       age_pheno: extract_age_pheno/output
       probe_coords: extract_probe_coords/output
+      ev2_probe_coords: extract_ev2_probe_coords/output  
       job_uuid: job_uuid
     out: [ lvl3betas, metadata, copynumber_segment, idat_noid_grn, idat_noid_red ]
 
