@@ -41,7 +41,7 @@ steps:
   extract_green_input:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: green_input_gdc_id
       file_size: green_input_file_size
     out: [ output ]
@@ -49,7 +49,7 @@ steps:
   extract_red_input:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: red_input_gdc_id
       file_size: red_input_file_size
     out: [ output ]
@@ -57,28 +57,28 @@ steps:
   extract_age_clock353:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: age_clock353
     out: [ output ]
 
   extract_age_sb:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: age_sb
     out: [ output ]
 
   extract_age_pheno:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: age_pheno
     out: [ output ]
 
   extract_probe_coords:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: probe_coords_uuid
     out: [ output ]
 
@@ -105,10 +105,10 @@ steps:
   load_idat_noid_grn:
     run: ../tools/bio_client_upload_pull_uuid.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       input: transform/idat_noid_grn
-      upload-bucket: bioclient_load_bucket
-      upload-key:
+      upload_bucket: bioclient_load_bucket
+      upload_key:
         source: [ job_uuid, transform/idat_noid_grn ]
         valueFrom: $(self[0])/$(self[1].basename)
       job_uuid: job_uuid
@@ -117,10 +117,10 @@ steps:
   load_idat_noid_red:
     run: ../tools/bio_client_upload_pull_uuid.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       input: transform/idat_noid_red
-      upload-bucket: bioclient_load_bucket
-      upload-key:
+      upload_bucket: bioclient_load_bucket
+      upload_key:
         source: [ job_uuid, transform/idat_noid_red ]
         valueFrom: $(self[0])/$(self[1].basename)
       job_uuid: job_uuid
@@ -129,10 +129,10 @@ steps:
   load_lvl3betas:
     run: ../tools/bio_client_upload_pull_uuid.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       input: transform/lvl3betas
-      upload-bucket: bioclient_load_bucket
-      upload-key:
+      upload_bucket: bioclient_load_bucket
+      upload_key:
         source: [ job_uuid, transform/lvl3betas ]
         valueFrom: $(self[0])/$(self[1].basename)
       job_uuid: job_uuid
@@ -141,10 +141,10 @@ steps:
   load_metadata:
     run: ../tools/bio_client_upload_pull_uuid.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       input: transform/metadata
-      upload-bucket: bioclient_load_bucket
-      upload-key:
+      upload_bucket: bioclient_load_bucket
+      upload_key:
         source: [ job_uuid, transform/metadata ]
         valueFrom: $(self[0])/$(self[1].basename)
     out: [ output ]
@@ -152,10 +152,10 @@ steps:
   load_copynumber_segment:
     run: ../tools/bio_client_upload_pull_uuid.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       input: transform/copynumber_segment
-      upload-bucket: bioclient_load_bucket
-      upload-key:
+      upload_bucket: bioclient_load_bucket
+      upload_key:
         source: [ job_uuid, transform/copynumber_segment ]
         valueFrom: $(self[0])/$(self[1].basename)
       job_uuid: job_uuid
