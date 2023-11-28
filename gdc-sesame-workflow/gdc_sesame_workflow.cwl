@@ -85,7 +85,7 @@ steps:
   extract_ev2_probe_coords:
     run: ../tools/bio_client_download.cwl
     in:
-      config-file: bioclient_config
+      config_file: bioclient_config
       download_handle: ev2_probe_coords_uuid
     out: [ output ]
 

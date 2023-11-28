@@ -15,6 +15,7 @@ inputs:
   age_pheno: File
   probe_coords: File
   ev2_probe_coords: File
+
 outputs:
   lvl3betas:
     type: File
