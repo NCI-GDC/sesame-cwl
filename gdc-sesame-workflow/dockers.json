@@ -1,4 +1,5 @@
 {
         "docker_repo": "docker.osdc.io/ncigdc",
-        "bio_client": "latest"
+        "bio_client": "latest",
+        "sesame-tool": "02ac3a079560cdbff24e1e887d60a3b614d27f6a
 }
